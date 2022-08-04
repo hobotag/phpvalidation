@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Validation</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script
+            src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <form id="validation" method="post" onsubmit="return false">
+            <input type="text" name="login" class="login">Login<br>
+            <input type="password" name="password" class="password">Password<br>
+            <input type="password" name="confirm_pass" class="confirm_pass">Confirm password<br>
+            <input type="email" name="email" class="email">Email<br>
+            <input type="text" name="name" class="name">Name<br>
+
+            <input type="submit" value="Отправить">
+        </form>
+        <script>
+            $("document").ready(function () {
+
+                $("#validation").on("submit", function () {
+                    let dataForm = $(this).serialize()
+
+                    $.ajax({
+                        method: "POST",
+                        url: "index.html",
+                        dataType: 'html',
+                        data: dataForm,
+                        success: function (data) {
+                            console.log(data);
+                        }
+                    });
+                })
+            })
+
+        </script>
+        <?php
+        var_dump($_POST);
+        ?>
+    </body>
+</html>
